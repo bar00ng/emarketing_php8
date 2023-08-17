@@ -56,7 +56,7 @@ class AdminController extends Controller
             $user->update($userAttributes);
         } else {
             $user = User::create(array_merge($userAttributes, [
-                'password' => Hash::make($validated['password']),
+                'password' => Hash::make($req->password),
             ]));
             $user->addRole('user');
         }

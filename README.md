@@ -104,7 +104,7 @@ Berikut adalah fitur yang ada di dalam aplikasi ini :
 4.  **Generate Report**\
     Admin mampu mengenerate report yang meliputi 2 hal: Daftar Barang dan Daftar Pengguna. Nanti nya report ini akan berupa file .pdf dengan nama yang autogenerate dan unique
     
-    ![Output Report]()
+    ![Output Report](https://github.com/bar00ng/emarketing_php8/blob/main/public/app_screenshots/output_report.PNG?raw=true)
 
 ## Default Account
 Ada 2 default account dengan level autentikasi yang berbeda- beda: 

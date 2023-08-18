@@ -90,4 +90,10 @@ class BarangController extends Controller
 
         return back()->with('success', 'Berhasil update status barang');
     }
+
+    public function detailBarang($barang_id) {
+        $barangData = Barang::find($barang_id);
+
+        return view('productDetail', compact('barangData'));
+    }
 }

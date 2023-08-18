@@ -8,11 +8,11 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Jumlah Pesanan</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">100</div>
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Jumlah Barang (Aktif/ non Aktif)</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $jumlahBarang }}</div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-list fa-2x text-gray-300"></i>
+                            <i class="fas fa-box fa-2x text-gray-300"></i>
                         </div>
                     </div>
                 </div>
@@ -25,11 +25,11 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                Rata- rata rating</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">5</div>
+                                Jumlah Pengguna Aktif</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $jumlahUser }}</div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-star fa-2x text-gray-300"></i>
+                            <i class="fas fa-users fa-2x text-gray-300"></i>
                         </div>
                     </div>
                 </div>

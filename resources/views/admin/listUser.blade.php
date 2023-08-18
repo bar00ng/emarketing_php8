@@ -20,7 +20,7 @@
         <div class="card-body">
             <a href="{{ route('form.user') }}" class="btn btn-secondary mb-4">Tambah User</a>
             <div class="table-responsive">
-                <table class="table-striped w-100" id="dataTable">
+                <table class="table table-striped w-100" id="dataTable">
                     <thead>
                         <tr>
                             <th class="p-2">No</th>
@@ -46,7 +46,7 @@
                     <tbody>
                         @if ($userData->isEmpty())
                             <tr>
-                                <td colspan="10">w
+                                <td colspan="10" class="text-center">
                                     <span class="font-italic">Data User Kosong</span>
                                 </td>
                             </tr>

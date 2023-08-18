@@ -5,9 +5,6 @@
     <div class="card-body">
         <form action="{{ route('form.user.action', isset($userData) ? ['user_id' => $userData->id] : []) }}" method="POST">
             @csrf
-            {{-- @if (isset($userData)) 
-                @method('PATCH') 
-            @endif --}}
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label>First Name</label>
@@ -72,6 +69,7 @@
                 </div>
             @endif
         
+            
             <button type="submit" class="btn btn-primary btn-block">Save</button>
         </form>
     </div>

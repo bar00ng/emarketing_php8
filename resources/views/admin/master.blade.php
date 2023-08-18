@@ -45,8 +45,8 @@
                     <span>Dashboard</span></a>
             </li>
 
-            <li class="nav-item {{ request()->routeIs('*book*') ? 'active' : '' }}">
-                <a class="nav-link" href="#">
+            <li class="nav-item {{ request()->routeIs('*barang*') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('barang.list') }}">
                     <i class="fas fa-fw fa-boxes"></i>
                     <span>Daftar Barang</span></a>
             </li>

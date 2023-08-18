@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BarangController;
 
 Route::get('/', function () {
     return view('admin.master');
@@ -30,6 +31,16 @@ Route::prefix('admin')->group(function() {
     Route::post('/form-user/{user_id?}', [AdminController::class, 'formUserAction'])->name('form.user.action');
 
     Route::delete('/delete-user/{user_id}', [AdminController::class, 'deleteUser'])->name('user.delete');
+
+    Route::get('/list-barang', [BarangController::class, 'daftarBarang'])->name('barang.list');
+
+    Route::get('/form-barang/{barang_id?}', [BarangController::class, 'formBarang'])->name('form.barang');
+
+    Route::post('/form-barang/{barang_id?}', [BarangController::class, 'formBarangAction'])->name('form.barang.action');
+
+    Route::delete('/delete-barang/{user_id}', [BarangController::class, 'deleteBarang'])->name('barang.delete');
+
+    Route::patch('/update-status-barang/{barang_id}/{isActive}', [BarangController::class, 'updateStatusBarang'])->name('barang.update.status');
 });
 
 // Route USER

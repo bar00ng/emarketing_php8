@@ -16,6 +16,16 @@
                 <p class="lead">
                     {{ $barangData->desc_barang }}
                 </p>
+                @if (Auth::user())
+                    <form action="{{ route('add.to.cart', $barangData->id) }}" class="d-flex" method="post">
+                        @csrf
+                        <input class="form-control text-center me-3" name="quantity_barang" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
+                        <button class="btn btn-outline-dark flex-shrink-0" type="submit">
+                            <i class="bi-cart-fill me-1"></i>
+                            Add to cart
+                        </button>
+                    </form>
+                @endif
             </div>
         </div>
     </div>

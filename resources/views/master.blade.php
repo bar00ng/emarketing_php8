@@ -22,9 +22,20 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                         <li class="nav-item"><a class="nav-link {{ request()->routeIs('*dashboard*') ? 'active' : '' }}" aria-current="page" href="{{ route('user.dashboard') }}">Home</a></li>
+                        @if (Auth::user())
+                            <li class="nav-item"><a class="nav-link {{ request()->routeIs('*order*') ? 'active' : '' }}" aria-current="page" href="{{ route('order.list') }}">Order</a></li>
+                        @endif
                     </ul>
                     <div class="d-flex gap-2">
                         @if (Auth::user())
+                            <a href="{{ route('order.form') }}" class="btn btn-outline-secondary">
+                                <span><i class="bi-cart-fill me-1"></i></span>
+                                <span>Cart</span>
+                                <span class="badge bg-secondary text-white ms-1 rounded-pill">
+                                    {{ Cart::session(Auth::user()->id)->getContent()->count() }}
+                                </span>
+                            </a>
+
                             <form action="{{ route('logout') }}" method="post">
                                 @csrf
                                 <button type="submit" class="btn btn-outline-danger ml-2">Logout</button>
@@ -36,6 +47,18 @@
                 </div>
             </div>
         </nav>
+
+        @if (session('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @elseif (session('failed'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{ session('failed') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
 
         @yield('content')
         
@@ -55,6 +78,17 @@
                     $('.col').filter(function() {
                         $(this).toggle($(this).text().toLowerCase().indexOf(searchText) > -1);
                     });
+                });
+
+                $('#bayar-pesanan').on('keyup', function() {
+                    var $bayar = parseFloat($(this).val());
+                    var $totalBayar = parseFloat($("#total-bayar").val());
+                    
+                    if (!isNaN($bayar) && !isNaN($totalBayar)) {
+                        $('#kembali-pesanan').val($bayar - $totalBayar);
+                    } else {
+                        $('#kembali-pesanan').val('');
+                    }
                 });
             });
         </script>

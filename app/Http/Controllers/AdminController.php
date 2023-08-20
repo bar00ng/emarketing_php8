@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use App\Models\Order;
+use App\Models\Payment;
 
 class AdminController extends Controller
 {
@@ -72,5 +74,38 @@ class AdminController extends Controller
         User::find($user_id)->delete();
 
         return back()->with('success', 'Berhasil menghapus data user');
+    }
+
+    public function daftarOrder() {
+        $pageName = "Daftar Order";
+        $orderData = Order::get();
+
+        return view('admin.listOrder', compact('orderData', 'pageName'));
+    }
+
+    public function daftarPayment() {
+        $pageName = "Daftar Payment";
+        $paymentData = Payment::get();
+
+        return view('admin.listPayment', compact('paymentData', 'pageName'));
+    }
+
+    public function updateOrder($kd_pesanan, $value) {
+        $query = Order::where('kd_pesanan', $kd_pesanan)->update([
+            'status' => $value
+        ]);
+
+        if ($value == 'Selesai') {
+            $message = 'Berhasil menandai order sebagai selesai';
+        } else {
+            $message = 'Berhasil menandai order sebagai Belum selesai';
+        }
+
+        if ($query) {
+            return back()->with('success', $message);
+        } else {
+            return back()->with('failed', 'Gagal update status order.');
+        }
+        
     }
 }

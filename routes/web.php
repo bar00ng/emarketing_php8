@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\OrderController;
 
 Route::get('/', function () {
     return redirect()->route('user.dashboard');
@@ -43,7 +44,19 @@ Route::prefix('admin')->group(function() {
 
     Route::patch('/update-status-barang/{barang_id}/{isActive}', [BarangController::class, 'updateStatusBarang'])->name('barang.update.status');
 
-    Route::get('/generate-report', [ReportController::class, 'index'])->name('generate.report');
+    Route::get('/report-user', [ReportController::class, 'index'])->name('generate.report');
+
+    Route::get('/report-barang', [ReportController::class, 'reportBarang'])->name('admin.barang.report');
+
+    Route::get('/list-order', [AdminController::class, 'daftarOrder'])->name('admin.list.order');
+
+    Route::get('/list-payment', [AdminController::class, 'daftarPayment'])->name('admin.list.payment');
+
+    Route::patch('/update-order-state/{kd_pesanan}/{value}', [AdminController::class, 'updateOrder'])->name('order.update');
+
+    Route::get('/report-order-admin', [ReportController::class, 'reportOrderAdmin'])->name('admin.order.report');
+
+    Route::get('/report-payment', [ReportController::class, 'reportPayment'])->name('admin.payment.report');
 });
 
 // Route USER
@@ -51,4 +64,18 @@ Route::prefix('user')->group(function() {
     Route::get('/', [DashboardController::class, 'userDashboard'])->name('user.dashboard');
 
     Route::get('/detail-product/{barang_id}', [BarangController::class, 'detailBarang'])->name('user.detail.barang');
+
+    Route::post('/add-to-cart/{barang_id}', [OrderController::class, 'addToCart'])->name('add.to.cart');
+
+    Route::post('/order', [OrderController::class, 'orderAction'])->name('order.action');
+
+    Route::get('/order', [OrderController::class, 'daftarOrder'])->name('order.list');
+
+    Route::get('/form-order', [OrderController::class, 'formOrder'])->name('order.form');
+
+    Route::delete('/delete-order/{order_id}', [OrderController::class, 'deleteOrder'])->name('order.delete');
+
+    Route::post('/remove-from-cart/{barang_id}', [OrderController::class, 'removeFromCart'])->name('remove.from.cart');
+
+    Route::get('/report-order', [ReportController::class, 'reportOrder'])->name('order.report');
 });

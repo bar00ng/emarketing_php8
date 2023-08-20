@@ -57,6 +57,18 @@
                     <span>Daftar Pengguna</span></a>
             </li>
 
+            <li class="nav-item {{ request()->routeIs('*order*') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('admin.list.order') }}">
+                    <i class="fas fa-fw fa-list"></i>
+                    <span>Daftar Pesanan</span></a>
+            </li>
+
+            <li class="nav-item {{ request()->routeIs('*payment*') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('admin.list.payment') }}">
+                    <i class="fas fa-fw fa-list"></i>
+                    <span>Daftar Payment</span></a>
+            </li>
+
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
@@ -109,8 +121,17 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">{{ $pageName }}</h1>
-                        @if (request()->routeIs('*dashboard*'))
+                        @if (request()->routeIs('user.list'))
                         <a href="{{ route('generate.report') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                            class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>   
+                        @elseif (request()->routeIs('barang.list'))
+                            <a href="{{ route('admin.barang.report') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>   
+                        @elseif (request()->routeIs('admin.list.order'))
+                        <a href="{{ route('admin.order.report') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                            class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>   
+                        @elseif (request()->routeIs('admin.list.payment'))
+                        <a href="{{ route('admin.payment.report') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                             class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>   
                         @endif
                         

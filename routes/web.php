@@ -23,7 +23,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/dashboard', [DashboardController::class, 'dashboardRedirect'])->name('dashboard');
 
 // Route ADMIN
-Route::prefix('admin')->group(function() {
+Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function() {
     Route::get('/dashboard', [DashboardController::class, 'adminDashboard'])->name('admin.dashboard');
 
     Route::get('/list-user', [AdminController::class, 'listUser'])->name('user.list');
@@ -65,17 +65,19 @@ Route::prefix('user')->group(function() {
 
     Route::get('/detail-product/{barang_id}', [BarangController::class, 'detailBarang'])->name('user.detail.barang');
 
-    Route::post('/add-to-cart/{barang_id}', [OrderController::class, 'addToCart'])->name('add.to.cart');
+    Route::middleware(['auth'])->group(function() {
+        Route::post('/add-to-cart/{barang_id}', [OrderController::class, 'addToCart'])->name('add.to.cart');
 
-    Route::post('/order', [OrderController::class, 'orderAction'])->name('order.action');
+        Route::post('/order', [OrderController::class, 'orderAction'])->name('order.action');
 
-    Route::get('/order', [OrderController::class, 'daftarOrder'])->name('order.list');
+        Route::get('/order', [OrderController::class, 'daftarOrder'])->name('order.list');
 
-    Route::get('/form-order', [OrderController::class, 'formOrder'])->name('order.form');
+        Route::get('/form-order', [OrderController::class, 'formOrder'])->name('order.form');
 
-    Route::delete('/delete-order/{order_id}', [OrderController::class, 'deleteOrder'])->name('order.delete');
+        Route::delete('/delete-order/{order_id}', [OrderController::class, 'deleteOrder'])->name('order.delete');
 
-    Route::post('/remove-from-cart/{barang_id}', [OrderController::class, 'removeFromCart'])->name('remove.from.cart');
+        Route::post('/remove-from-cart/{barang_id}', [OrderController::class, 'removeFromCart'])->name('remove.from.cart');
 
-    Route::get('/report-order', [ReportController::class, 'reportOrder'])->name('order.report');
+        Route::get('/report-order', [ReportController::class, 'reportOrder'])->name('order.report');
+    });
 });

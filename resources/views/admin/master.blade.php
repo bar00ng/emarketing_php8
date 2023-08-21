@@ -32,8 +32,9 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <div class="sidebar-brand-text mx-3">E- Marketing</div>
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('admin.dashboard') }}">
+                
+                <div class="sidebar-brand-text mx-3">PT Auto Daya Keisindo</div>
             </a>
 
             <!-- Divider -->
@@ -65,7 +66,7 @@
 
             <li class="nav-item {{ request()->routeIs('*payment*') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('admin.list.payment') }}">
-                    <i class="fas fa-fw fa-list"></i>
+                    <i class="fas fa-file-invoice-dollar"></i>
                     <span>Daftar Payment</span></a>
             </li>
 
@@ -164,7 +165,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                        <span>Copyright &copy; PT Auto Daya Keisindo 2023</span>
                     </div>
                 </div>
             </footer>

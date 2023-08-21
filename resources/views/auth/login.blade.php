@@ -22,7 +22,7 @@
             {{ $errors->first('password') }}
         </div>
     </div>
-    <button type="submit" class="btn btn-primary btn-block">Register</button>
+    <button type="submit" class="btn btn-primary btn-block">Login</button>
   </form>
 </form>
 <hr>

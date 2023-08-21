@@ -107,8 +107,15 @@
 
 @section('script')
 <script>
-    $(document).ready(function() {
+    $('#bayar-pesanan').on('keyup', function() {
+        var $bayar = parseFloat($(this).val());
+        var $totalBayar = parseFloat($("#total-bayar").val());
         
+        if (!isNaN($bayar) && !isNaN($totalBayar)) {
+            $('#kembali-pesanan').val($bayar - $totalBayar);
+        } else {
+            $('#kembali-pesanan').val('');
+        }
     });
 </script>
 @endsection

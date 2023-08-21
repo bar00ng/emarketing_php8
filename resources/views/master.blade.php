@@ -17,7 +17,13 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="#!">Start Bootstrap</a>
+                <div class="navbar-brand d-flex gap-2 align-items-center">
+                    <img src="/app_logo.png" alt="PT. Auto Daya Keisindo" height="50">
+                    <span>PT. Auto Daya Keisindo</span>
+                </div>
+                <a class="navbar-brand" href="#!">
+                    
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
@@ -64,7 +70,7 @@
         
         <!-- Footer-->
         <footer class="py-5 bg-dark">
-            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>
+            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; PT Auto Daya Keisindo 2023</p></div>
         </footer>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -79,18 +85,9 @@
                         $(this).toggle($(this).text().toLowerCase().indexOf(searchText) > -1);
                     });
                 });
-
-                $('#bayar-pesanan').on('keyup', function() {
-                    var $bayar = parseFloat($(this).val());
-                    var $totalBayar = parseFloat($("#total-bayar").val());
-                    
-                    if (!isNaN($bayar) && !isNaN($totalBayar)) {
-                        $('#kembali-pesanan').val($bayar - $totalBayar);
-                    } else {
-                        $('#kembali-pesanan').val('');
-                    }
-                });
             });
         </script>
+
+        @yield('script')
     </body>
 </html>

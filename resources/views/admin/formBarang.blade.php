@@ -16,11 +16,11 @@
             <div class="form-group">
                 <label>Kategori Barang</label>
                 <select name="kategori_barang" class="form-control @error('kategori_barang') is-invalid @enderror">
-                    <option value="t-shirt" {{ old('kategori_barang') == 't-shirt' ? 'selected' : '' }} {{ isset($barangData) && $barangData->kategori_barang == 't-shirt' ? 'selected' : '' }}>T- shirt</option>
-                    <option value="jaket" {{ old('kategori_barang') == 'jaket' ? 'selected' : '' }} {{ isset($barangData) && $barangData->kategori_barang == 'jaket' ? 'selected' : '' }}>Jaket</option>
-                    <option value="shorts" {{ old('kategori_barang') == 'shorts' ? 'selected' : '' }} {{ isset($barangData) && $barangData->kategori_barang == 'shorts' ? 'selected' : '' }}>Shorts</option>
-                    <option value="pants" {{ old('kategori_barang') == 'pants' ? 'selected' : '' }} {{ isset($barangData) && $barangData->kategori_barang == 'pants' ? 'selected' : '' }}>Pants</option>
-                    <option value="sweater" {{ old('kategori_barang') == 'sweater' ? 'selected' : '' }} {{ isset($barangData) && $barangData->kategori_barang == 'sweater' ? 'selected' : '' }}>Sweater</option>
+                    <option value="mobil" {{ old('kategori_barang') == 'mobil' ? 'selected' : '' }} {{ isset($barangData) && $barangData->kategori_barang == 'mobil' ? 'selected' : '' }}>Mobil</option>
+                    <option value="motor" {{ old('kategori_barang') == 'motor' ? 'selected' : '' }} {{ isset($barangData) && $barangData->kategori_barang == 'motor' ? 'selected' : '' }}>Motor</option>
+                    <option value="cat-body" {{ old('kategori_barang') == 'cat-body' ? 'selected' : '' }} {{ isset($barangData) && $barangData->kategori_barang == 'cat-body' ? 'selected' : '' }}>Cat Body</option>
+                    <option value="spare-part-mobil" {{ old('kategori_barang') == 'spare-part-mobil' ? 'selected' : '' }} {{ isset($barangData) && $barangData->kategori_barang == 'spare-part-mobil' ? 'selected' : '' }}>Spare Part Mobil</option>
+                    <option value="spare-part-motor" {{ old('kategori_barang') == 'spare-part-motor' ? 'selected' : '' }} {{ isset($barangData) && $barangData->kategori_barang == 'spare-part-motor' ? 'selected' : '' }}>Spare Part Motor</option>
                 </select>
                 <div class="invalid-feedback">
                     {{ $errors->first('kategori_barang') }}

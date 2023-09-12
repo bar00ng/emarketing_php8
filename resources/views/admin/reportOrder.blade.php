@@ -107,7 +107,7 @@
     </table>
 
     <div class="footer-text">
-        <p>Jakarta, {{ \Carbon\Carbon::now()->format('d F Y') }}</p>
+        <p>Jakarta, {{ \Carbon\Carbon::now()->locale('id_ID')->isoFormat('dddd, D MMMM YYYY') }}</p>
         <p>Administrator</p>
         <br><br><br><br>
         <p>{{ Auth::user()->first_name . ' ' . Auth::user()->last_name }}</p>
